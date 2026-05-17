@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+
+# Environment variables — NEVER commit these
+.env
+.env.*
+!.env.example
+
+# Alembic
+alembic/versions/*.pyc
+
+# Node
+node_modules/
+.env.local
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

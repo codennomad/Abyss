@@ -1,0 +1,288 @@
+/* ── Loading ──────────────────────────────────────────────────────────────── */
+.dash-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 60vh;
+}
+
+.dash-loading__bar {
+  width: 200px;
+  height: 2px;
+  background: rgba(176, 0, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.dash-loading__fill {
+  height: 100%;
+  width: 40%;
+  background: var(--acid);
+  border-radius: 2px;
+  animation: load-slide 1.2s var(--ease-smooth) infinite alternate;
+}
+
+@keyframes load-slide {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(300%); }
+}
+
+/* ── Dashboard layout ─────────────────────────────────────────────────────── */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1100px;
+}
+
+/* ── Bento Hero ───────────────────────────────────────────────────────────── */
+.bento-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding: 32px 36px;
+  background: rgba(176, 0, 255, 0.04);
+  border: 1px solid rgba(176, 0, 255, 0.14);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(176,0,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.dash-hero__sub {
+  color: var(--text-3);
+  margin-top: 10px;
+  max-width: 440px;
+}
+
+/* Hero heat widget */
+.bento-hero__heat {
+  min-width: 180px;
+  padding: 20px 24px;
+  background: rgba(176, 0, 255, 0.06);
+  border: 1px solid rgba(176, 0, 255, 0.18);
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+/* ── Contribution grid card ───────────────────────────────────────────────── */
+.bento-grid-card {
+  padding: 24px 28px;
+}
+
+/* ── Bento stat cards ─────────────────────────────────────────────────────── */
+.bento-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.bento-stat-wrap {
+  height: 100%;
+}
+
+.bento-stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 24px 18px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bento-stat__bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(176, 0, 255, 0.12);
+}
+
+.bento-stat__bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: var(--pct, 0%);
+  background: var(--acid);
+  box-shadow: 0 0 6px rgba(176,0,255,0.5);
+  transition: width 800ms var(--ease-spring);
+}
+
+.bento-stat__sublabel {
+  font-size: 0.6875rem;
+  color: var(--text-4);
+  margin-top: 2px;
+}
+
+/* ── Stat card shared ─────────────────────────────────────────────────────── */
+.stat-card__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-4);
+}
+
+.stat-card__value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  font-family: var(--text-mono);
+}
+
+.stat-unit {
+  font-size: 1rem;
+  color: var(--text-3);
+  margin-left: 2px;
+}
+
+/* ── Domain card ──────────────────────────────────────────────────────────── */
+.domain-card {
+  padding: 24px 28px;
+}
+
+.domain-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.domain-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 72px;
+  align-items: center;
+  gap: 14px;
+}
+
+.domain-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.domain-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--acid-dim), var(--acid));
+  border-radius: 2px;
+  transition: width 600ms var(--ease-spring);
+  box-shadow: 0 0 8px rgba(176,0,255,0.3);
+}
+
+.domain-xp {
+  text-align: right;
+  color: var(--text-4);
+}
+
+/* ── Heat components ──────────────────────────────────────────────────────── */
+.heat-value { font-family: var(--text-mono); }
+.heat-unit  { color: var(--text-3); }
+
+.heat-status {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--acid);
+}
+
+.heat-bar {
+  height: 3px;
+  background: rgba(176, 0, 255, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.heat-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--acid-dim), var(--acid-bright));
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(176,0,255,0.4);
+  transition: width 600ms var(--ease-spring);
+}
+
+/* ── Hero reveal animation ────────────────────────────────────────────────── */
+.dash-hero .split-line {
+  display: block;
+  overflow: hidden;
+}
+
+.dash-hero .split-line span {
+  display: block;
+  transform: translateY(100%);
+  transition: transform 700ms var(--ease-spring);
+}
+
+.dash-hero.revealed .split-line span {
+  transform: translateY(0);
+}
+
+.dash-hero .section-marker {
+  opacity: 0;
+  transition: opacity 400ms ease 200ms;
+}
+
+.dash-hero.revealed .section-marker {
+  opacity: 1;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .bento-hero {
+    grid-template-columns: 1fr;
+    padding: 22px 18px;
+    gap: 20px;
+  }
+
+  .bento-hero__heat {
+    min-width: unset;
+  }
+
+  .bento-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .bento-stats .bento-stat-wrap:last-child {
+    grid-column: span 2;
+  }
+
+  .bento-grid-card,
+  .domain-card {
+    padding: 18px 16px;
+  }
+
+  .stat-card__value {
+    font-size: 1.75rem;
+  }
+
+  .domain-row {
+    grid-template-columns: 90px 1fr 60px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bento-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-stats .bento-stat-wrap:last-child {
+    grid-column: span 1;
+  }
+}

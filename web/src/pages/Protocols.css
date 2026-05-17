@@ -1,0 +1,171 @@
+.proto-loading {
+  display: flex; align-items: center; justify-content: center;
+  height: 50vh; color: var(--acid); letter-spacing: 0.18em;
+}
+
+.protocols { display: flex; flex-direction: column; gap: 24px; max-width: 860px; }
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.proto-header {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+}
+
+/* ── Filter tabs ──────────────────────────────────────────────────────────── */
+.proto-filters {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  width: fit-content;
+}
+
+.filter-tab {
+  font-family: var(--font);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 3px;
+  border: none;
+  background: transparent;
+  color: var(--text-4);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease-smooth), color var(--dur) var(--ease-smooth);
+}
+
+.filter-tab:hover { color: var(--text-2); }
+
+.filter-tab--active {
+  background: rgba(176,0,255,0.15);
+  color: var(--acid);
+}
+
+.filter-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--warn); color: #000;
+  font-size: 0.5625rem; font-weight: 700;
+}
+
+/* ── Create form ──────────────────────────────────────────────────────────── */
+.proto-form { border-radius: var(--radius-lg) !important; }
+.proto-form__inner { display: flex; flex-direction: column; gap: 16px; }
+.proto-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.proto-error {
+  font-size: 0.8125rem; color: var(--danger);
+  padding: 10px 14px;
+  background: rgba(255,32,96,0.07);
+  border: 1px solid rgba(255,32,96,0.2);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Protocol list ────────────────────────────────────────────────────────── */
+.proto-list { display: flex; flex-direction: column; gap: 10px; }
+
+.proto-empty {
+  text-align: center; padding: 56px 24px !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+/* ── Protocol card ────────────────────────────────────────────────────────── */
+.proto-card {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 20px 22px;
+  border-radius: var(--radius-lg);
+}
+
+.proto-card--inactive { opacity: 0.35; filter: grayscale(0.4); }
+
+.proto-card--due {
+  border-top-color: rgba(255,170,0,0.3) !important;
+  box-shadow: 0 0 0 1px rgba(255,170,0,0.08) !important;
+}
+
+.proto-card__top {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+
+.proto-card__meta { display: flex; align-items: center; gap: 8px; }
+
+/* Due indicator dot */
+.due-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--warn);
+  box-shadow: 0 0 8px var(--warn);
+  flex-shrink: 0;
+  animation: pulse-glow 1.8s infinite;
+}
+
+.proto-card__actions { display: flex; gap: 8px; flex-shrink: 0; }
+.proto-card__name { color: var(--text); font-size: 1.0625rem; }
+.proto-card__desc { color: var(--text-3); }
+
+.proto-card__footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.proto-card__footer-left { display: flex; align-items: center; gap: 14px; }
+
+/* ── Log buttons ──────────────────────────────────────────────────────────── */
+.log-actions { display: flex; gap: 6px; align-items: center; }
+
+.log-btn {
+  font-family: var(--font);
+  padding: 5px 10px; border-radius: var(--radius-sm);
+  border: 1px solid; font-size: 0.5625rem;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  background: transparent; cursor: pointer;
+  transition: background var(--dur) var(--ease-smooth),
+              box-shadow var(--dur) var(--ease-smooth),
+              transform var(--dur) var(--ease-smooth);
+}
+.log-btn:hover { transform: translateY(-1px); }
+.log-btn--done   { border-color: rgba(0,255,170,0.35); color: var(--ok); }
+.log-btn--failed { border-color: rgba(255,32,96,0.35); color: var(--danger); }
+.log-btn--skipped{ border-color: rgba(107,112,128,0.3); color: var(--text-4); }
+.log-btn--done:hover    { background: rgba(0,255,170,0.08); box-shadow: 0 0 10px rgba(0,255,170,0.08); }
+.log-btn--failed:hover  { background: rgba(255,32,96,0.08); box-shadow: 0 0 10px rgba(255,32,96,0.08); }
+.log-btn--skipped:hover { background: rgba(107,112,128,0.05); }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .protocols { gap: 16px; }
+
+  .proto-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .proto-filters {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .filter-tab {
+    flex-shrink: 0;
+    padding: 6px 12px;
+  }
+
+  .proto-form__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proto-card {
+    padding: 16px;
+  }
+
+  .proto-card__actions {
+    flex-wrap: wrap;
+  }
+}

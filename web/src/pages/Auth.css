@@ -1,0 +1,104 @@
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient blobs on auth page */
+.auth-page::before {
+  content: '';
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(176,0,255,0.18) 0%, transparent 70%);
+  pointer-events: none;
+  animation: blob-float 12s infinite alternate ease-in-out;
+}
+
+/* Auth card */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+  z-index: 2;
+  animation: fadeSlideIn 0.7s var(--ease-spring) both;
+}
+
+/* Accent line at top */
+.auth-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--acid), transparent);
+  border-radius: 1px;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.auth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.auth-logo {
+  font-family: var(--text-mono);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  line-height: 1;
+  color: var(--acid);
+  text-shadow: 0 0 24px var(--acid-glow), 0 0 48px var(--acid-glow-sm);
+}
+
+.auth-sub {
+  font-size: 0.625rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-4);
+}
+
+/* ── Form ────────────────────────────────────────────────────────────────── */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-error {
+  font-size: 0.8125rem;
+  color: var(--danger);
+  padding: 10px 14px;
+  background: rgba(255, 32, 96, 0.07);
+  border: 1px solid rgba(255, 32, 96, 0.2);
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.02em;
+}
+
+.auth-alt {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--text-4);
+}
+
+.auth-alt a {
+  color: var(--acid);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}

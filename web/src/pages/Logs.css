@@ -1,0 +1,114 @@
+.logs-loading {
+  display: flex; align-items: center; justify-content: center;
+  height: 50vh; color: var(--acid); letter-spacing: 0.18em;
+}
+
+.logs-page { display: flex; flex-direction: column; gap: 28px; max-width: 760px; }
+
+.logs-empty {
+  text-align: center; padding: 56px 24px !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+/* ── Groups ───────────────────────────────────────────────────────────────── */
+.logs-groups { display: flex; flex-direction: column; gap: 28px; }
+
+.log-group { display: flex; flex-direction: column; gap: 8px; }
+
+.log-group__header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 4px;
+}
+
+.log-group__date {
+  color: var(--text-3);
+  flex-shrink: 0;
+  letter-spacing: 0.1em;
+}
+
+.log-group__line {
+  flex: 1; height: 1px;
+  background: rgba(255,255,255,0.05);
+}
+
+.log-group__count { color: var(--text-4); flex-shrink: 0; }
+
+/* ── Log entries ──────────────────────────────────────────────────────────── */
+.log-entries { display: flex; flex-direction: column; gap: 6px; }
+
+.log-entry {
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease-smooth),
+              box-shadow var(--dur) var(--ease-smooth);
+}
+
+.log-entry:hover {
+  transform: translateX(3px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Left color bar by status */
+.log-entry__status-bar {
+  width: 3px;
+  flex-shrink: 0;
+}
+
+.log-entry--done   .log-entry__status-bar { background: var(--ok); }
+.log-entry--failed .log-entry__status-bar { background: var(--danger); }
+.log-entry--skipped .log-entry__status-bar { background: rgba(107,112,128,0.5); }
+
+.log-entry__main {
+  flex: 1;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.log-entry__top {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+}
+
+.log-entry__name {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.log-entry__time { color: var(--text-4); flex-shrink: 0; }
+
+.log-entry__bottom {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+
+.log-entry__xp { color: var(--ok); }
+
+.log-entry__note {
+  color: var(--text-4);
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .logs-page { gap: 20px; }
+
+  .log-entry__top {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .log-entry__name {
+    white-space: normal;
+  }
+}
